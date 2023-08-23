@@ -1,0 +1,4 @@
+2023-08-22 16:23:06 [http-nio-8080-exec-1] DEBUG c.e.demo.controller.LoggerController - A DEBUG Message
+2023-08-22 16:23:06 [http-nio-8080-exec-1] INFO  c.e.demo.controller.LoggerController - An INFO Message
+2023-08-22 16:23:06 [http-nio-8080-exec-1] WARN  c.e.demo.controller.LoggerController - A WARN Message
+2023-08-22 16:23:06 [http-nio-8080-exec-1] ERROR c.e.demo.controller.LoggerController - An ERROR Message

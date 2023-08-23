@@ -1,0 +1,6 @@
+2023-08-22 16:19:11 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-22 16:19:11 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-08-22 16:19:11 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2023-08-22 16:19:11 [http-nio-8080-exec-1] INFO  c.e.demo.controller.LoggerController - An INFO Message
+2023-08-22 16:19:11 [http-nio-8080-exec-1] WARN  c.e.demo.controller.LoggerController - A WARN Message
+2023-08-22 16:19:11 [http-nio-8080-exec-1] ERROR c.e.demo.controller.LoggerController - An ERROR Message
