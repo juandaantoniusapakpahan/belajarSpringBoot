@@ -8,7 +8,7 @@ public class ErrorResponseTemplate {
     private int status;
     private String error;
     private String message;
-    private String path;
+
 
 
     public Integer getStatus() {
@@ -35,23 +35,17 @@ public class ErrorResponseTemplate {
         this.message = message;
     }
 
-    public String getPath() {
-        return path;
-    }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
 
     public ErrorResponseTemplate(
                                  int status,
                                  String error,
-                                 String message,
-                                 String path){
+                                 String message
+                                ){
         this.status = status;
         this.message = message;
         this.error = error;
-        this.path = path;
+
     }
 
     public ErrorResponseTemplate(){}

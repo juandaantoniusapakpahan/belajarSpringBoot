@@ -1,7 +1,5 @@
-package com.example.springrestapi.controller;
+package com.example.springrestapi.exception;
 
-import com.example.springrestapi.exception.AccountAlreadyExistsException;
-import com.example.springrestapi.exception.NoSuchAccountExistsException;
 import com.example.springrestapi.model.ErrorResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
