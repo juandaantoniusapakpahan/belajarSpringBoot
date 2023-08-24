@@ -11,16 +11,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-
     @Autowired private UserRepository userRepository;
-
     @Override
     public User save(User user) {
         try {
             return userRepository.save(user);
-        }catch (DataIntegrityViolationException ex){
+        }catch (Exception e){
+            System.out.println(e.getMessage());
             throw new UserAlreadyExistsException("user already exists");
         }
-
     }
 }
