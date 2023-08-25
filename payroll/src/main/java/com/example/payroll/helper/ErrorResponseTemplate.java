@@ -5,27 +5,20 @@ package com.example.payroll.helper;
 
 public class ErrorResponseTemplate {
 
-    private int status;
-    private String error;
+    private int statusCode;
     private String message;
 
 
 
     public Integer getStatus() {
-        return status;
+        return statusCode;
     }
 
     public void setStatus(int status) {
-        this.status = status;
+        this.statusCode = status;
     }
 
-    public String getError() {
-        return error;
-    }
 
-    public void setError(String error) {
-        this.error = error;
-    }
 
     public String getMessage() {
         return message;
@@ -38,13 +31,11 @@ public class ErrorResponseTemplate {
 
 
     public ErrorResponseTemplate(
-                                 int status,
-                                 String error,
+                                 int statusCode,
                                  String message
                                 ){
-        this.status = status;
+        this.statusCode = statusCode;
         this.message = message;
-        this.error = error;
 
     }
 

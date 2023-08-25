@@ -2,9 +2,11 @@ package com.example.payroll.service;
 
 import com.example.payroll.model.SalaryMatrix;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface SalaryMatrixService {
     public SalaryMatrix create(SalaryMatrix salaryMatrix);
     public void delete(Long id);

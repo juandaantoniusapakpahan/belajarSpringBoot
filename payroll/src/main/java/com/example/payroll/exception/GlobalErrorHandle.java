@@ -38,7 +38,6 @@ public class GlobalErrorHandle extends ResponseEntityExceptionHandler {
         });
         ErrorResponseTemplate errorResponseTemplate  = new ErrorResponseTemplate(
                 HttpStatus.BAD_REQUEST.value(),
-                HttpStatus.BAD_REQUEST.name(),
                 errors.toString()
         );
         return handleExceptionInternal(ex, errorResponseTemplate, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
@@ -51,7 +50,6 @@ public class GlobalErrorHandle extends ResponseEntityExceptionHandler {
         log.error("handle GradeSalaryMatrixExistsException",ex);
         ErrorResponseTemplate errorResponseTemplate = new ErrorResponseTemplate(
                 HttpStatus.CONFLICT.value(),
-                HttpStatus.CONFLICT.name(),
                 ex.getMessage()
         );
         return handleExceptionInternal(ex, errorResponseTemplate, new HttpHeaders(), HttpStatus.CONFLICT,request);
@@ -62,7 +60,6 @@ public class GlobalErrorHandle extends ResponseEntityExceptionHandler {
         log.error("handle NoSuchSalaryMatrixException",ex);
         ErrorResponseTemplate errorResponseTemplate = new ErrorResponseTemplate(
                 HttpStatus.NOT_FOUND.value(),
-                HttpStatus.NOT_FOUND.name(),
                 ex.getMessage()
         );
         return handleExceptionInternal(ex, errorResponseTemplate, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
@@ -72,7 +69,6 @@ public class GlobalErrorHandle extends ResponseEntityExceptionHandler {
         log.error("handle Exception",ex);
         ErrorResponseTemplate errorResponseTemplate = new ErrorResponseTemplate(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                HttpStatus.INTERNAL_SERVER_ERROR.name(),
                 ex.getMessage()
         );
         return handleExceptionInternal(

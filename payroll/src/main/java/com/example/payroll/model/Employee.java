@@ -3,17 +3,18 @@ package com.example.payroll.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "employees")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +38,7 @@ public class Employee {
     @NotNull(message = "grade is mandatory")
     private int grade;
 
-    @Column(nullable = false, unique = true, name = "nik")
+    @Column(nullable = false, unique = true, name = "nip")
     @NotBlank(message = "nip is mandatory")
     @Pattern(regexp = "\\d{8,20}")
     private String nip;
