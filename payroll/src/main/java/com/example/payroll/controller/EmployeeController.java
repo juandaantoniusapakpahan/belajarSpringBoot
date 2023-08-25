@@ -5,12 +5,14 @@ import com.example.payroll.model.Employee;
 import com.example.payroll.service.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -23,5 +25,36 @@ public class EmployeeController {
     public ResponseEntity<?> save(@Valid @RequestBody Employee employee){
         Employee employee1 = employeeService.save(employee);
         return new ResponseEntity<>(employee1, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> findAll(@RequestParam int page, @RequestParam int size, @RequestParam String sortColumn){
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortColumn).ascending());
+        List<Employee>employees = employeeService.findAll(pageable);
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findById(@PathVariable Long id){
+        Employee employee = employeeService.findById(id);
+        return new ResponseEntity<>(employee, HttpStatus.OK);
+    }
+    @GetMapping("/grade/{grade}")
+    public ResponseEntity<?> findByGrade(@PathVariable int grade, @RequestParam int page, @RequestParam int size, @RequestParam String sortColumn){
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortColumn).ascending());
+        List<Employee> employees = employeeService.findByGrade(grade, pageable);
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable Long id){
+        Employee employee = employeeService.deleteById(id);
+        return new ResponseEntity<>(employee, HttpStatus.OK);
+    }
+
+    @GetMapping("/nonActive")
+    public ResponseEntity<?> findNonActive(){
+        List<Employee> employees = employeeService.findNonActive();
+        return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 }

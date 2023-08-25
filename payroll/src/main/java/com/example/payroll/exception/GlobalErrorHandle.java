@@ -57,7 +57,7 @@ public class GlobalErrorHandle extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, errorResponseTemplate, new HttpHeaders(), HttpStatus.CONFLICT,request);
     }
 
-    @ExceptionHandler({NoSuchSalaryMatrixException.class})
+    @ExceptionHandler({NoSuchSalaryMatrixException.class, NoSuchEmployeeException.class})
     protected ResponseEntity<Object> handleNoSuchSalaryMatrixException(final Exception ex, final WebRequest request){
         log.error("handle NoSuchSalaryMatrixException",ex);
         ErrorResponseTemplate errorResponseTemplate = new ErrorResponseTemplate(

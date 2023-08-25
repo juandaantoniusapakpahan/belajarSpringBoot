@@ -13,7 +13,6 @@ public class NoSuchSalaryMatrixException extends RuntimeException{
         super(message);
         this.message = message;
     }
-
     public NoSuchSalaryMatrixException(Throwable cause){
         super(cause);
     }

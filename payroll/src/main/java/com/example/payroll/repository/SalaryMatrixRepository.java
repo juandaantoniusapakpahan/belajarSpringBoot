@@ -5,11 +5,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
+import java.util.Optional;
 
 public interface SalaryMatrixRepository extends JpaRepository<SalaryMatrix, Long> {
-    SalaryMatrix findByGrade(Integer grade);
     Page<SalaryMatrix> findAll(Pageable pageable);
-    SalaryMatrix findByGrade(int grade);
+    Optional<SalaryMatrix> findByGrade(int grade);
+
 }

@@ -68,12 +68,12 @@ public class SalaryMatrixServiceImpl implements SalaryMatrixService {
     }
 
     public SalaryMatrix findByGrade(int grade){
-        SalaryMatrix salaryMatrix =salaryMatrixRepository.findByGrade(grade);
-
-        if (salaryMatrix == null){
+        try {
+            SalaryMatrix salaryMatrix =salaryMatrixRepository.findByGrade(grade).get();
+            return salaryMatrix;
+        }catch (NoSuchElementException e){
             throw new NoSuchSalaryMatrixException("no such salary matrix");
         }
-        return salaryMatrix;
     }
 
 }

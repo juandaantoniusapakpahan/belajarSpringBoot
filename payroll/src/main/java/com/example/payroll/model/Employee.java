@@ -34,8 +34,8 @@ public class Employee {
     private String gender;
 
     @Column(nullable = false)
-    @NotNull(message = "salaryMatrixId is mandatory")
-    private Long salaryMatrixId;
+    @NotNull(message = "grade is mandatory")
+    private int grade;
 
     @Column(nullable = false, unique = true, name = "nik")
     @NotBlank(message = "nip is mandatory")
