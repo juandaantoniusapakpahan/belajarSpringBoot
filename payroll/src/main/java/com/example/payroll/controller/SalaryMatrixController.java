@@ -1,10 +1,10 @@
 package com.example.payroll.controller;
 
-import com.example.payroll.model.SalaryMatrix;
+import com.example.payroll.model.entity.SalaryMatrix;
+import com.example.payroll.model.request.SalaryMatrixRequest;
 import com.example.payroll.service.SalaryMatrixService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class SalaryMatrixController {
 
 
     @PostMapping
-    public ResponseEntity<?> save(@Valid @RequestBody SalaryMatrix salaryMatrix) {
+    public ResponseEntity<?> save(@Valid @RequestBody SalaryMatrixRequest salaryMatrix) {
         SalaryMatrix _result = salaryMatrixService.create(salaryMatrix);
         return new ResponseEntity<>(_result, HttpStatus.CREATED);
     }
@@ -34,8 +34,8 @@ public class SalaryMatrixController {
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody SalaryMatrix salaryMatrix){
-        SalaryMatrix _result = salaryMatrixService.update(id, salaryMatrix);
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody SalaryMatrixRequest salaryMatrixRequest){
+        SalaryMatrix _result = salaryMatrixService.update(id, salaryMatrixRequest);
         return new ResponseEntity<>(_result, HttpStatus.OK);
     }
 

@@ -1,7 +1,8 @@
 package com.example.payroll.controller;
 
 
-import com.example.payroll.model.Employee;
+import com.example.payroll.model.entity.Employee;
+import com.example.payroll.model.request.EmployeeRequest;
 import com.example.payroll.service.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class EmployeeController {
 
 
     @PostMapping
-    public ResponseEntity<?> save(@Valid @RequestBody Employee employee){
+    public ResponseEntity<?> save(@Valid @RequestBody EmployeeRequest employee){
         Employee employee1 = employeeService.save(employee);
         return new ResponseEntity<>(employee1, HttpStatus.CREATED);
     }

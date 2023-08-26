@@ -1,6 +1,6 @@
 package com.example.payroll.repository;
 
-import com.example.payroll.model.SalaryMatrix;
+import com.example.payroll.model.entity.SalaryMatrix;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

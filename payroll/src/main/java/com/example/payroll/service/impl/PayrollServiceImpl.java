@@ -1,12 +1,10 @@
 package com.example.payroll.service.impl;
 
-import com.example.payroll.model.Employee;
-import com.example.payroll.model.Payroll;
-import com.example.payroll.model.PayrollRequest;
-import com.example.payroll.model.SalaryMatrix;
-import com.example.payroll.repository.EmployeeRepository;
+import com.example.payroll.model.entity.Employee;
+import com.example.payroll.model.entity.Payroll;
+import com.example.payroll.model.request.PayrollRequest;
+import com.example.payroll.model.entity.SalaryMatrix;
 import com.example.payroll.repository.PayrollRepository;
-import com.example.payroll.repository.SalaryMatrixRepository;
 import com.example.payroll.service.EmployeeService;
 import com.example.payroll.service.PayrollService;
 import com.example.payroll.service.SalaryMatrixService;
@@ -25,7 +23,7 @@ public class PayrollServiceImpl implements PayrollService {
     public Payroll save(PayrollRequest payrollRequest) {
         Employee employee = employeeService.findById(payrollRequest.getEmployeeId());
         SalaryMatrix salaryMatrix = salaryMatrixService.findByGrade(employee.getGrade());
-        Payroll payroll = new Payroll(payrollRequest.getAttend(), payrollRequest.getAbsent(), payrollRequest.getPeriod(), payrollRequest.getEmployeeId());
+        Payroll payroll = new Payroll(payrollRequest);
 
         payroll.setPayCut(payrollRequest.getAbsent() * salaryMatrix.getPayCut());
         payroll.setAllowance(payrollRequest.getAttend() * salaryMatrix.getAllowance());

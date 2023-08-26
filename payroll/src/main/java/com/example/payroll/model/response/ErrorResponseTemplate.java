@@ -1,4 +1,4 @@
-package com.example.payroll.helper;
+package com.example.payroll.model.response;
 
 
 
@@ -7,7 +7,6 @@ public class ErrorResponseTemplate {
 
     private int statusCode;
     private String message;
-
 
 
     public Integer getStatus() {
@@ -19,7 +18,6 @@ public class ErrorResponseTemplate {
     }
 
 
-
     public String getMessage() {
         return message;
     }
@@ -28,16 +26,13 @@ public class ErrorResponseTemplate {
         this.message = message;
     }
 
-
-
     public ErrorResponseTemplate(
-                                 int statusCode,
-                                 String message
+                                 final int statusCode,
+                                 final String message
                                 ){
         this.statusCode = statusCode;
         this.message = message;
 
     }
-
     public ErrorResponseTemplate(){}
 }

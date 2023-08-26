@@ -1,7 +1,7 @@
 package com.example.payroll.service;
 
-import com.example.payroll.model.Payroll;
-import com.example.payroll.model.PayrollRequest;
+import com.example.payroll.model.entity.Payroll;
+import com.example.payroll.model.request.PayrollRequest;
 import org.springframework.stereotype.Repository;
 
 @Repository

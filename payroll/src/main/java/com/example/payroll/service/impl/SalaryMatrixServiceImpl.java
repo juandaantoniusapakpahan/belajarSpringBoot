@@ -2,7 +2,8 @@ package com.example.payroll.service.impl;
 
 import com.example.payroll.exception.GradeSalaryMatrixExistsException;
 import com.example.payroll.exception.NoSuchSalaryMatrixException;
-import com.example.payroll.model.SalaryMatrix;
+import com.example.payroll.model.entity.SalaryMatrix;
+import com.example.payroll.model.request.SalaryMatrixRequest;
 import com.example.payroll.repository.SalaryMatrixRepository;
 import com.example.payroll.service.SalaryMatrixService;
 import jakarta.transaction.Transactional;
@@ -24,8 +25,9 @@ public class SalaryMatrixServiceImpl implements SalaryMatrixService {
 
     @Autowired SalaryMatrixRepository salaryMatrixRepository;
 
-    public SalaryMatrix create(SalaryMatrix salaryMatrix){
+    public SalaryMatrix create(SalaryMatrixRequest salaryMatrixRequest){
         try{
+            SalaryMatrix salaryMatrix = new SalaryMatrix(salaryMatrixRequest);
             return salaryMatrixRepository.save(salaryMatrix);
         }catch (DataIntegrityViolationException e){
             throw new GradeSalaryMatrixExistsException("Grade number already exists");
@@ -42,9 +44,10 @@ public class SalaryMatrixServiceImpl implements SalaryMatrixService {
 
     }
 
-    public SalaryMatrix update(Long id, SalaryMatrix salaryMatrix){
+    public SalaryMatrix update(Long id, SalaryMatrixRequest salaryMatrixRequest){
         try{
             salaryMatrixRepository.findById(id).get();
+            SalaryMatrix salaryMatrix = new SalaryMatrix(salaryMatrixRequest);
             salaryMatrix.setSalaryMatrixId(id);
             return salaryMatrixRepository.save(salaryMatrix);
         }catch(NoSuchElementException e){

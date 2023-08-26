@@ -3,7 +3,8 @@ package com.example.payroll.service.impl;
 import com.example.payroll.exception.NikEmployeeExistsException;
 import com.example.payroll.exception.NoSuchEmployeeException;
 import com.example.payroll.exception.NoSuchSalaryMatrixException;
-import com.example.payroll.model.Employee;
+import com.example.payroll.model.entity.Employee;
+import com.example.payroll.model.request.EmployeeRequest;
 import com.example.payroll.repository.EmployeeRepository;
 import com.example.payroll.repository.SalaryMatrixRepository;
 import com.example.payroll.service.EmployeeService;
@@ -23,10 +24,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired private SalaryMatrixRepository salaryMatrixRepository;
 
     @Override
-    public Employee save(Employee employee) {
+    public Employee save(EmployeeRequest employeeRequest) {
         try{
-            salaryMatrixRepository.findByGrade(employee.getGrade());
-            employee.setActive(true);
+            salaryMatrixRepository.findByGrade(employeeRequest.getGrade());
+            employeeRequest.setActive(true);
+            Employee employee = new Employee(employeeRequest);
             return  employeeRepository.save(employee);
         }catch (NoSuchElementException e){
             throw new NoSuchSalaryMatrixException("no such salary matrix");

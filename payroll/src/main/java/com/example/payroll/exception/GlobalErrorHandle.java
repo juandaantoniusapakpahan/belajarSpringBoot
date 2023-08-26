@@ -1,6 +1,6 @@
 package com.example.payroll.exception;
 
-import com.example.payroll.helper.ErrorResponseTemplate;
+import com.example.payroll.model.response.ErrorResponseTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;

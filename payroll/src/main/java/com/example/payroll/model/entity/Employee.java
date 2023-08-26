@@ -1,6 +1,8 @@
-package com.example.payroll.model;
+package com.example.payroll.model.entity;
 
 
+import com.example.payroll.model.request.EmployeeRequest;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -22,36 +24,39 @@ public class Employee {
     private Long employeeId;
 
     @Column(nullable = false, length = 64)
-    @Size(min = 2, max = 64)
-    @NotBlank(message = "firstName is mandatory")
     private String firstName;
 
     @Column(nullable = true, length = 64)
-    @Size(max = 64)
     private String lastName;
 
     @Column(nullable = false, length = 16)
-    @NotBlank(message = "gender is mandatory")
     private String gender;
 
     @Column(nullable = false)
-    @NotNull(message = "grade is mandatory")
     private int grade;
 
-    @Column(nullable = false, unique = true, name = "nip")
-    @NotBlank(message = "nip is mandatory")
-    @Pattern(regexp = "\\d{8,20}")
+    @Column(nullable = false, unique = true, name = "nip", length = 64)
     private String nip;
 
     @Column(nullable = false,name = "married")
-    @NotNull(message = "married is mandatory")
     private boolean married;
 
     @Column(nullable = false,columnDefinition = "boolean default true")
     private boolean active;
 
-    @CreationTimestamp
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     private Timestamp created_at;
-    @UpdateTimestamp
+
+
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     private Timestamp updated_at;
+
+    public Employee(EmployeeRequest emr){
+        this.firstName = emr.getFirstName();
+        this.lastName  = emr.getLastName();
+        this.gender =emr.getGender();
+        this.nip = emr.getNip();
+        this.married = emr.isMarried();
+        this.active = emr.isActive();
+    }
 }
