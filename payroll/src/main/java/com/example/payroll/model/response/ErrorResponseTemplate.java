@@ -13,8 +13,8 @@ public class ErrorResponseTemplate {
         return statusCode;
     }
 
-    public void setStatus(int status) {
-        this.statusCode = status;
+    public void setStatus(int statusCode) {
+        this.statusCode = statusCode;
     }
 
 

@@ -15,4 +15,5 @@ public interface EmployeeService {
     public List<Employee> findByGrade(int grade, Pageable pageable);
     public Employee deleteById(Long id);
     public List<Employee> findNonActive();
+    public Employee updateById(Long id, EmployeeRequest employeeRequest);
 }

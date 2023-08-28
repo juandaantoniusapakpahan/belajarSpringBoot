@@ -1,6 +1,8 @@
 package com.example.payroll.model.request;
 
 
+import com.example.payroll.model.entity.Employee;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -2,14 +2,10 @@ package com.example.payroll.model.entity;
 
 
 import com.example.payroll.model.request.EmployeeRequest;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import java.sql.Timestamp;
 
 @Entity
@@ -48,12 +44,26 @@ public class Employee {
     private Timestamp created_at;
 
 
+    //Trigger function
+//    db_payroll=# CREATE FUNCTION update_updated_at_column() RETURNS trigger
+//    LANGUAGE plpgsql
+//    AS $$
+//    BEGIN
+//    NEW.updated_at = NOW();
+//    RETURN NEW;
+//    END;
+//    $$;
+
+    // Make trigger
+    //db_payroll=# CREATE TRIGGER sm_updated_sm_modtime BEFORE UPDATE ON salary_matrixs FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     private Timestamp updated_at;
 
     public Employee(EmployeeRequest emr){
         this.firstName = emr.getFirstName();
         this.lastName  = emr.getLastName();
+        this.grade = emr.getGrade();
         this.gender =emr.getGender();
         this.nip = emr.getNip();
         this.married = emr.isMarried();

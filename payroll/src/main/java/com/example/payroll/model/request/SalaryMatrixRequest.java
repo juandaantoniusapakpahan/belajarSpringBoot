@@ -1,6 +1,7 @@
 package com.example.payroll.model.request;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
@@ -13,6 +14,9 @@ import java.sql.Timestamp;
 @Data
 @NoArgsConstructor
 public class SalaryMatrixRequest {
+    @JsonIgnore
+    private Long salaryMatrixId;
+
     @Min(1)
     private int grade;
 

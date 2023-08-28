@@ -8,6 +8,7 @@ import com.example.payroll.model.request.EmployeeRequest;
 import com.example.payroll.repository.EmployeeRepository;
 import com.example.payroll.repository.SalaryMatrixRepository;
 import com.example.payroll.service.EmployeeService;
+import com.example.payroll.service.SalaryMatrixService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -21,12 +22,12 @@ import java.util.NoSuchElementException;
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
     @Autowired private EmployeeRepository employeeRepository;
-    @Autowired private SalaryMatrixRepository salaryMatrixRepository;
+    @Autowired private SalaryMatrixService salaryMatrixService;
 
     @Override
     public Employee save(EmployeeRequest employeeRequest) {
         try{
-            salaryMatrixRepository.findByGrade(employeeRequest.getGrade());
+            salaryMatrixService.findByGrade(employeeRequest.getGrade());
             employeeRequest.setActive(true);
             Employee employee = new Employee(employeeRequest);
             return  employeeRepository.save(employee);
@@ -35,6 +36,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         catch (DataIntegrityViolationException e){
             throw new NikEmployeeExistsException("nik employee already exists");
+        }
+    }
+
+    @Override
+    public Employee updateById(Long id, EmployeeRequest employeeRequest){
+        try {
+            employeeRepository.findById(id).get();
+            salaryMatrixService.findByGrade(employeeRequest.getGrade());
+            Employee employee = new Employee(employeeRequest);
+            employee.setEmployeeId(id);
+            return employeeRepository.save(employee);
+        }catch (NoSuchElementException e){
+            throw new NoSuchEmployeeException("employee not found");
         }
     }
 

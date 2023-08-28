@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class PayrollResponse {
-
     private Long payRollId;
     private int attend;
     private int absent;
@@ -31,7 +30,7 @@ public class PayrollResponse {
         this.period = payroll.getPeriod();
         this.headOfFamily = payroll.getHeadOfFamily();
         this.allowance = payroll.getAllowance();
-        this.employeeId = payroll.getEmployeeId();
+        this.employeeId = payroll.getEmployee().getEmployeeId();
         this.total = payroll.getTotal();
     }
 }

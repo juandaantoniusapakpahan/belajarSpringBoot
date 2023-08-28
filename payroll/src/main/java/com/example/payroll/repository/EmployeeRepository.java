@@ -21,5 +21,4 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Modifying
     @Query("update Employee emp set emp.active = :active where emp.employeeId = :employeeId")
     void updateById(@Param("active") boolean isActive, @Param("employeeId") Long id);
-
 }
