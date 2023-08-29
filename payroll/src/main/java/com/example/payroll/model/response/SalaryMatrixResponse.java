@@ -13,11 +13,11 @@ import java.sql.Timestamp;
 public class SalaryMatrixResponse {
 
     private Long salaryMatrixId;
-    private int grade;
-    private double basicSalary;
-    private double payCut;
-    private double allowance;
-    private double headOfFamily;
+    private Integer grade;
+    private Double basicSalary;
+    private Double payCut;
+    private Double allowance;
+    private Double headOfFamily;
     @JsonIgnore
     private Timestamp created_at;
     @JsonIgnore

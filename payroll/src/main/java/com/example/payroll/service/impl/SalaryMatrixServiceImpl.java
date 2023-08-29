@@ -25,7 +25,7 @@ public class SalaryMatrixServiceImpl implements SalaryMatrixService {
 
     @Autowired SalaryMatrixRepository salaryMatrixRepository;
 
-    public SalaryMatrix create(SalaryMatrixRequest salaryMatrixRequest){
+    public SalaryMatrix create(SalaryMatrixRequest salaryMatrixRequest) throws RuntimeException{
         try{
             SalaryMatrix salaryMatrix = new SalaryMatrix(salaryMatrixRequest);
             return salaryMatrixRepository.save(salaryMatrix);
@@ -34,7 +34,7 @@ public class SalaryMatrixServiceImpl implements SalaryMatrixService {
         }
     }
 
-    public void delete(Long id){
+    public void delete(Long id) throws RuntimeException{
         try{
             salaryMatrixRepository.findById(id).get();
             salaryMatrixRepository.deleteById(id);
@@ -44,7 +44,7 @@ public class SalaryMatrixServiceImpl implements SalaryMatrixService {
 
     }
 
-    public SalaryMatrix update(Long id, SalaryMatrixRequest salaryMatrixRequest){
+    public SalaryMatrix update(Long id, SalaryMatrixRequest salaryMatrixRequest)throws RuntimeException{
         try{
             salaryMatrixRepository.findById(id).get();
             SalaryMatrix salaryMatrix = new SalaryMatrix(salaryMatrixRequest);
@@ -57,20 +57,20 @@ public class SalaryMatrixServiceImpl implements SalaryMatrixService {
         }
     }
 
-    public List<SalaryMatrix> findAll(int page, int size, String sortColumn){
+    public List<SalaryMatrix> findAll(int page, int size, String sortColumn) throws RuntimeException{
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortColumn).ascending());
         return salaryMatrixRepository.findAll(pageable).stream().toList();
     }
 
-    public SalaryMatrix findById(Long id){
+    public SalaryMatrix findById(Long id) throws RuntimeException{
         try {
             return salaryMatrixRepository.findById(id).get();
-        }catch (NoSuchElementException ex){
+        }catch (NoSuchElementException e){
             throw new NoSuchSalaryMatrixException("no such salary matrix");
         }
     }
 
-    public SalaryMatrix findByGrade(int grade){
+    public SalaryMatrix findByGrade(int grade) throws  RuntimeException{
         try {
             SalaryMatrix salaryMatrix =salaryMatrixRepository.findByGrade(grade).get();
             return salaryMatrix;

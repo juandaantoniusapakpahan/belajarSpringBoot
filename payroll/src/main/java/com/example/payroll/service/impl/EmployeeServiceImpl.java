@@ -6,7 +6,6 @@ import com.example.payroll.exception.NoSuchSalaryMatrixException;
 import com.example.payroll.model.entity.Employee;
 import com.example.payroll.model.request.EmployeeRequest;
 import com.example.payroll.repository.EmployeeRepository;
-import com.example.payroll.repository.SalaryMatrixRepository;
 import com.example.payroll.service.EmployeeService;
 import com.example.payroll.service.SalaryMatrixService;
 import jakarta.transaction.Transactional;
@@ -25,11 +24,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired private SalaryMatrixService salaryMatrixService;
 
     @Override
-    public Employee save(EmployeeRequest employeeRequest) {
+    public Employee save(EmployeeRequest employeeRequest) throws RuntimeException {
         try{
             salaryMatrixService.findByGrade(employeeRequest.getGrade());
-            employeeRequest.setActive(true);
             Employee employee = new Employee(employeeRequest);
+            employee.setActive(true);
             return  employeeRepository.save(employee);
         }catch (NoSuchElementException e){
             throw new NoSuchSalaryMatrixException("no such salary matrix");
@@ -40,7 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee updateById(Long id, EmployeeRequest employeeRequest){
+    public Employee updateById(Long id, EmployeeRequest employeeRequest) throws RuntimeException{
         try {
             employeeRepository.findById(id).get();
             salaryMatrixService.findByGrade(employeeRequest.getGrade());
@@ -57,7 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.findAll(pageable).toList();
     }
     @Override
-    public Employee findById(Long id){
+    public Employee findById(Long id) throws RuntimeException{
         try{
             return employeeRepository.findById(id).get();
         }catch (NoSuchElementException e){
@@ -70,7 +69,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee deleteById(Long id){
+    public Employee deleteById(Long id) throws RuntimeException{
         try {
             employeeRepository.findById(id).get();
             Boolean isActive = false;
@@ -83,6 +82,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> findNonActive(){
-        return employeeRepository.findByActive(false);
+        boolean active = false;
+        return employeeRepository.findByActive(active);
     }
 }

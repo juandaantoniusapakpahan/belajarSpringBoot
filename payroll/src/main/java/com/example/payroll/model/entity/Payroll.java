@@ -23,25 +23,25 @@ public class Payroll {
     private Long payRollId;
 
     @Column(nullable = false)
-    private int attend;
+    private Integer attend;
 
     @Column(nullable = false)
-    private int absent;
+    private Integer absent;
 
     @Column(nullable = false)
-    private double basicSalary;
+    private Double basicSalary;
 
     @Column(nullable = false)
-    private double payCut;
+    private Double payCut;
 
     @Column(nullable = false)
     private String period;
 
     @Column(nullable = false)
-    private double headOfFamily;
+    private Double headOfFamily;
 
     @Column(nullable = false)
-    private double allowance;
+    private Double allowance;
 
 //    @Column(nullable = false)
 //    private Long employeeId;
@@ -81,4 +81,15 @@ public class Payroll {
 //        this.employeeId = payrollRequest.getEmployeeId();
     }
 
+    public Payroll(Long payRollId, Integer attend, Integer absent, Double basicSalary, Double payCut, String period, Double headOfFamily, Double allowance, Double total) {
+        this.payRollId = payRollId;
+        this.attend = attend;
+        this.absent = absent;
+        this.basicSalary = basicSalary;
+        this.payCut = payCut;
+        this.period = period;
+        this.headOfFamily = headOfFamily;
+        this.allowance = allowance;
+        this.total = total;
+    }
 }

@@ -75,4 +75,13 @@ public class SalaryMatrix {
         this.headOfFamily = sMR.getHeadOfFamily();
         this.payCut = sMR.getPayCut();
     }
+
+    public SalaryMatrix(Long salaryMatrixId, int grade, double basicSalary, double payCut, double allowance, double headOfFamily) {
+        this.salaryMatrixId = salaryMatrixId;
+        this.grade = grade;
+        this.basicSalary = basicSalary;
+        this.payCut = payCut;
+        this.allowance = allowance;
+        this.headOfFamily = headOfFamily;
+    }
 }

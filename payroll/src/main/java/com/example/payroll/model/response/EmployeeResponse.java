@@ -16,13 +16,13 @@ public class EmployeeResponse {
 
     private String gender;
 
-    private int grade;
+    private Integer grade;
 
     private String nip;
 
-    private boolean married;
+    private Boolean married;
 
-    private boolean active;
+    private Boolean active;
 
     public EmployeeResponse(Employee employee){
         this.employeeId = employee.getEmployeeId();
@@ -31,7 +31,7 @@ public class EmployeeResponse {
         this.gender = employee.getGender();
         this.grade = employee.getGrade();
         this.nip = employee.getNip();
-        this.married = employee.isMarried();
-        this.active = employee.isActive();
+        this.married = employee.getMarried();
+        this.active = employee.getActive();
     }
 }

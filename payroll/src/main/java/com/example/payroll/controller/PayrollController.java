@@ -3,7 +3,6 @@ package com.example.payroll.controller;
 
 import com.example.payroll.model.entity.Payroll;
 import com.example.payroll.model.request.PayrollRequest;
-import com.example.payroll.model.response.PayrollResponse;
 import com.example.payroll.service.PayrollService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +23,13 @@ public class PayrollController {
     @PostMapping
     public ResponseEntity<?> save(@Valid @RequestBody PayrollRequest request){
         Payroll payroll = payrollService.save(request);
-        PayrollResponse payrollResponse = new PayrollResponse(payroll);
-        return new ResponseEntity<>(payrollResponse, HttpStatus.CREATED);
+        return new ResponseEntity<>(payroll, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateById(@PathVariable Long id, @RequestBody PayrollRequest payrollRequest){
+    public ResponseEntity<?> updateById(@PathVariable Long id,@Valid @RequestBody PayrollRequest payrollRequest){
         Payroll payroll = payrollService.updateById(id, payrollRequest);
-        PayrollResponse payrollResponse = new PayrollResponse(payroll);
-        return new ResponseEntity<>(payrollResponse, HttpStatus.OK);
+        return new ResponseEntity<>(payroll, HttpStatus.OK);
     }
 
     @GetMapping

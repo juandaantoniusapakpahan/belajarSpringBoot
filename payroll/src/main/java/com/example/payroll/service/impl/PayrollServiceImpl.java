@@ -39,7 +39,7 @@ public class PayrollServiceImpl implements PayrollService {
             payroll.setPayCut(payrollRequest.getAbsent() * salaryMatrix.getPayCut());
             payroll.setAllowance(payrollRequest.getAttend() * salaryMatrix.getAllowance());
             payroll.setBasicSalary(salaryMatrix.getBasicSalary());
-            if (employee.getGender().equals("Laki-laki") && employee.isMarried() == true) {
+            if (employee.getGender().equals("Laki-laki") && employee.getMarried() == true) {
                 payroll.setHeadOfFamily(salaryMatrix.getHeadOfFamily());
             }
             payroll.setTotal(payroll.getAllowance() + payroll.getBasicSalary() + payroll.getHeadOfFamily() - payroll.getPayCut());
@@ -52,6 +52,7 @@ public class PayrollServiceImpl implements PayrollService {
 
     @Override public Payroll updateById(Long id, PayrollRequest payrollRequest){
         try{
+            payrollRepository.findById(id).get();
             Employee employee = employeeService.findById(payrollRequest.getEmployeeId());
             SalaryMatrix salaryMatrix = salaryMatrixService.findByGrade(employee.getGrade());
             Payroll payroll = new Payroll(payrollRequest);
@@ -61,7 +62,7 @@ public class PayrollServiceImpl implements PayrollService {
             payroll.setAllowance(payrollRequest.getAttend() * salaryMatrix.getAllowance());
             payroll.setBasicSalary(salaryMatrix.getBasicSalary());
 
-            if (employee.getGender().equals("Laki-laki") && employee.isMarried() == true){
+            if (employee.getGender().equals("Laki-laki") && employee.getMarried() == true){
                 payroll.setHeadOfFamily(salaryMatrix.getHeadOfFamily());
             }
             payroll.setTotal(payroll.getAllowance() + payroll.getBasicSalary() + payroll.getHeadOfFamily() - payroll.getPayCut());

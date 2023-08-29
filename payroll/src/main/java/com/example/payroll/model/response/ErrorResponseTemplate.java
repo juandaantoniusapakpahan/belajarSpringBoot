@@ -5,7 +5,7 @@ package com.example.payroll.model.response;
 
 public class ErrorResponseTemplate {
 
-    private int statusCode;
+    private Integer statusCode;
     private String message;
 
 
@@ -27,7 +27,7 @@ public class ErrorResponseTemplate {
     }
 
     public ErrorResponseTemplate(
-                                 final int statusCode,
+                                 final Integer statusCode,
                                  final String message
                                 ){
         this.statusCode = statusCode;

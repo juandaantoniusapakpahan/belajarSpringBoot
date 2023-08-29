@@ -29,16 +29,16 @@ public class Employee {
     private String gender;
 
     @Column(nullable = false)
-    private int grade;
+    private Integer grade;
 
     @Column(nullable = false, unique = true, name = "nip", length = 64)
     private String nip;
 
     @Column(nullable = false,name = "married")
-    private boolean married;
+    private Boolean married;
 
     @Column(nullable = false,columnDefinition = "boolean default true")
-    private boolean active;
+    private Boolean active;
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     private Timestamp created_at;
@@ -55,7 +55,7 @@ public class Employee {
 //    $$;
 
     // Make trigger
-    //db_payroll=# CREATE TRIGGER sm_updated_sm_modtime BEFORE UPDATE ON salary_matrixs FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+   // db_payroll=# CREATE TRIGGER sm_updated_sm_modtime BEFORE UPDATE ON salary_matrixs FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     private Timestamp updated_at;
@@ -66,7 +66,18 @@ public class Employee {
         this.grade = emr.getGrade();
         this.gender =emr.getGender();
         this.nip = emr.getNip();
-        this.married = emr.isMarried();
-        this.active = emr.isActive();
+        this.married = emr.getMarried();
+        this.active = emr.getActive();
+    }
+
+    public Employee(Long employeeId, String firstName, String lastName, String gender, Integer grade, String nip, Boolean married, Boolean active) {
+        this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.grade = grade;
+        this.nip = nip;
+        this.married = married;
+        this.active = active;
     }
 }

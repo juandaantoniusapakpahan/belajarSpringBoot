@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PayrollResponse {
     private Long payRollId;
-    private int attend;
-    private int absent;
-    private double basicSalary;
-    private double payCut;
+    private Integer attend;
+    private Integer absent;
+    private Double basicSalary;
+    private Double payCut;
     private String period;
-    private double headOfFamily;
-    private double allowance;
+    private Double headOfFamily;
+    private Double allowance;
     private Long employeeId;
     private Double total;
 

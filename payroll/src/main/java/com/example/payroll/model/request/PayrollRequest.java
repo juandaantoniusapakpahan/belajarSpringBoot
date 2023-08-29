@@ -1,11 +1,6 @@
 package com.example.payroll.model.request;
 
-
-import com.example.payroll.model.entity.Employee;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,17 +8,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PayrollRequest {
 
+    @Min(value = 0)
     @NotNull(message = "attend is mandatory")
-    @Min(0)
-    private int absent;
+    private Integer absent;
 
+    @Min(value = 0)
     @NotNull(message = "attend is mandatory")
-    @Min(0)
-    private int attend;
+    private Integer attend;
 
     @NotBlank(message = "period is mandatory")
     private String period;
 
     @NotNull(message = "employeeId is mandatory")
     private Long employeeId;
+
+    public PayrollRequest(Integer absent, Integer attend, String period, Long employeeId) {
+        this.absent = absent;
+        this.attend = attend;
+        this.period = period;
+        this.employeeId = employeeId;
+    }
 }
