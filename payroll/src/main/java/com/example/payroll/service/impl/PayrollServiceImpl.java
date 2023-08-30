@@ -13,6 +13,7 @@ import com.example.payroll.service.SalaryMatrixService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -75,8 +76,8 @@ public class PayrollServiceImpl implements PayrollService {
     }
 
     @Override
-    public List<Payroll> findAll(Pageable pageable){
-        return payrollRepository.findAll(pageable).stream().toList();
+    public Page<Payroll> findAll(Pageable pageable){
+        return payrollRepository.findAll(pageable);
     }
 
     @Override

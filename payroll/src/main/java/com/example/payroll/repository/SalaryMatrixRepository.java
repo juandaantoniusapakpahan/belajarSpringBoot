@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface SalaryMatrixRepository extends JpaRepository<SalaryMatrix, Long> {
     Page<SalaryMatrix> findAll(Pageable pageable);
     Optional<SalaryMatrix> findByGrade(int grade);
+
 }

@@ -1,7 +1,6 @@
 package com.example.springbootjdbc.repository;
 
 import com.example.springbootjdbc.model.Account;
-import com.example.springbootjdbc.model.Amount;
 
 import java.util.List;
 

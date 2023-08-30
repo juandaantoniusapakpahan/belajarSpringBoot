@@ -11,6 +11,7 @@ import com.example.payroll.service.SalaryMatrixService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -52,8 +53,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> findAll(Pageable pageable){
-        return employeeRepository.findAll(pageable).toList();
+    public Page<Employee> findAll(Pageable pageable) throws RuntimeException{
+        return employeeRepository.findAll(pageable);
     }
     @Override
     public Employee findById(Long id) throws RuntimeException{

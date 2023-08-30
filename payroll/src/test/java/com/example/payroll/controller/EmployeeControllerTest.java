@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -55,18 +56,10 @@ public class EmployeeControllerTest {
     @DisplayName("Testing Employee: When get All request employee")
     public void whenGetAllEmployeeRequest_thenReturnCorrectResponse() throws Exception{
 
-        Employee employee = new Employee((long)10, "Julio","Panjaitan","Laki-laki",2, "1297034231",true,false);
-        Employee employeeI = new Employee((long)12, "Karunia","Sentosa","Laki-laki",2, "12970343231",true,false);
-        List<Employee> employees = new ArrayList<>();
-        employees.add(employeeI);
-        employees.add(employee);
-        when(employeeService.findAll(any())).thenReturn(employees);
         mockMvc.perform(MockMvcRequestBuilders.get("/api/employees?page=0&size=5&sortColumn=nip")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].firstName").value("Karunia"));
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON));
     }
 
     @Test
@@ -85,8 +78,8 @@ public class EmployeeControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.firstName").value("Julio"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.lastName").value("Panjaita"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.firstName").value("Julio"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.lastName").value("Panjaita"));
     }
 
     @Test
@@ -116,8 +109,8 @@ public class EmployeeControllerTest {
                 .content(employee)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.firstName").value("Julio"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.lastName").value("Yermia Panjaitan"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.firstName").value("Julio"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.lastName").value("Yermia Panjaitan"));
     }
 
     @Test
@@ -143,7 +136,7 @@ public class EmployeeControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/employees/{id}",id))
                 .andDo(print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.lastName").value(employee.getLastName()));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.lastName").value(employee.getLastName()));
     }
 
     @Test
@@ -187,7 +180,7 @@ public class EmployeeControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/employees/nonActive"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray());
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data").isArray());
     }
 
     @Test

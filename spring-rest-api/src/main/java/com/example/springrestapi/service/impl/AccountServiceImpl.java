@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -30,7 +31,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Iterable<Account> findAll(){
+    public List<Account> findAll(){
         return accountRepository.findAll();
     }
 
@@ -45,16 +46,24 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account deposit(double amount, Long id){
-        accountRepository.findById(id).get();
-        accountRepository.deposit(amount, id);
-        return accountRepository.findById(id).get();
+        try {
+            accountRepository.findById(id).get();
+            accountRepository.deposit(amount, id);
+            return accountRepository.findById(id).get();
+        }catch (NoSuchElementException e){
+            throw new NoSuchAccountExistsException("No Such Account Exists");
+        }
     }
 
     @Override
     public Account withdrawal(double amount, Long id){
-        accountRepository.findById(id).get();
-        accountRepository.withdraw(amount, id);
-        return accountRepository.findById(id).get();
+       try{
+           accountRepository.findById(id).get();
+           accountRepository.withdraw(amount, id);
+           return accountRepository.findById(id).get();
+       }catch (NoSuchElementException e){
+           throw new NoSuchAccountExistsException("No Such Account Exists");
+       }
     }
 
     @Override

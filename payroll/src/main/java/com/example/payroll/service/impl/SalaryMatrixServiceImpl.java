@@ -9,6 +9,7 @@ import com.example.payroll.service.SalaryMatrixService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -57,9 +58,9 @@ public class SalaryMatrixServiceImpl implements SalaryMatrixService {
         }
     }
 
-    public List<SalaryMatrix> findAll(int page, int size, String sortColumn) throws RuntimeException{
+    public Page<SalaryMatrix> findAll(int page, int size, String sortColumn) throws RuntimeException{
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortColumn).ascending());
-        return salaryMatrixRepository.findAll(pageable).stream().toList();
+        return salaryMatrixRepository.findAll(pageable);
     }
 
     public SalaryMatrix findById(Long id) throws RuntimeException{

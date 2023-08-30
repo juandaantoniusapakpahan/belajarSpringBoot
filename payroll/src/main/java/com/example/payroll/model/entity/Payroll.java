@@ -43,9 +43,6 @@ public class Payroll {
     @Column(nullable = false)
     private Double allowance;
 
-//    @Column(nullable = false)
-//    private Long employeeId;
-
     @Column(nullable = false)
     private Double total;
 
@@ -59,18 +56,6 @@ public class Payroll {
     private Employee employee;
 
 
-    //Trigger function
-//    db_payroll=# CREATE FUNCTION update_updated_at_column() RETURNS trigger
-//    LANGUAGE plpgsql
-//    AS $$
-//    BEGIN
-//    NEW.updated_at = NOW();
-//    RETURN NEW;
-//    END;
-//    $$;
-
-    // Make trigger
-    //db_payroll=# CREATE TRIGGER sm_updated_sm_modtime BEFORE UPDATE ON salary_matrixs FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     private Timestamp updatedAt;
 
