@@ -1,0 +1,455 @@
+2023-08-31 15:11:42,899 INFO  [org.apache.activemq.artemis.integration.bootstrap] AMQ101000: Starting ActiveMQ Artemis Server version 2.30.0
+2023-08-31 15:11:43,212 INFO  [org.apache.activemq.artemis.core.server] AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=data/journal,bindingsDirectory=data/bindings,largeMessagesDirectory=data/large-messages,pagingDirectory=data/paging)
+2023-08-31 15:11:43,319 INFO  [org.apache.activemq.artemis.core.server] AMQ221013: Using NIO Journal
+2023-08-31 15:11:43,379 INFO  [org.apache.activemq.artemis.core.server] AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 1073741824
+2023-08-31 15:11:43,432 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2023-08-31 15:11:43,434 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+2023-08-31 15:11:43,434 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+2023-08-31 15:11:43,435 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-mqtt-protocol]. Adding protocol support for: MQTT
+2023-08-31 15:11:43,436 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-openwire-protocol]. Adding protocol support for: OPENWIRE
+2023-08-31 15:11:43,436 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+2023-08-31 15:11:43,517 INFO  [org.apache.activemq.artemis.core.server] AMQ221034: Waiting indefinitely to obtain live lock
+2023-08-31 15:11:43,518 INFO  [org.apache.activemq.artemis.core.server] AMQ221035: Live Server Obtained live lock
+2023-08-31 15:11:43,690 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2023-08-31 15:11:43,721 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2023-08-31 15:11:43,794 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2023-08-31 15:11:43,796 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2023-08-31 15:11:44,685 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:61616 for protocols [CORE,MQTT,AMQP,STOMP,HORNETQ,OPENWIRE]
+2023-08-31 15:11:44,690 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5445 for protocols [HORNETQ,STOMP]
+2023-08-31 15:11:44,698 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5672 for protocols [AMQP]
+2023-08-31 15:11:44,715 ERROR [org.apache.activemq.artemis.core.server] AMQ224104: Error starting the Acceptor mqtt {scheme=tcp, tcpReceiveBufferSize=1048576, port=1883, host=0.0.0.0, protocols=MQTT, useEpoll=true, tcpSendBufferSize=1048576}
+2023-08-31 15:11:44,718 ERROR [org.apache.activemq.artemis.core.server] AMQ224000: Failure in initialisation
+java.lang.IllegalStateException: AMQ229230: Failed to bind acceptor mqtt to 0.0.0.0:1883
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.startServerChannels(NettyAcceptor.java:735) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.start(NettyAcceptor.java:531) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.server.impl.RemotingServiceImpl.startAcceptors(RemotingServiceImpl.java:316) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.completeActivation(ActiveMQServerImpl.java:3542) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.LiveOnlyActivation.run(LiveOnlyActivation.java:80) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:718) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:608) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.integration.FileBroker.start(FileBroker.java:66) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.commands.Run.execute(Run.java:129) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.internalExecute(Artemis.java:214) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.execute(Artemis.java:164) [artemis-cli-2.30.0.jar:2.30.0]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.apache.activemq.artemis.boot.Artemis.execute(Artemis.java:144) [artemis-boot.jar:2.30.0]
+	at org.apache.activemq.artemis.boot.Artemis.main(Artemis.java:61) [artemis-boot.jar:2.30.0]
+Caused by: io.netty.channel.unix.Errors$NativeIoException: bind(..) failed: Address already in use
+2023-08-31 15:11:44,743 INFO  [org.apache.activemq.artemis.core.server] AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.30.0 [0.0.0.0, nodeID=05411a65-47d6-11ee-83c0-46f0add6e2e5] 
+2023-08-31 15:11:44,757 INFO  [org.apache.activemq.artemis] AMQ241003: Starting embedded web server
+2023-08-31 15:11:45,273 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Initialized activemq-branding plugin
+2023-08-31 15:11:45,396 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Initialized artemis-plugin plugin
+2023-08-31 15:11:45,785 INFO  [io.hawt.HawtioContextListener] Initialising hawtio services
+2023-08-31 15:11:45,795 INFO  [io.hawt.system.ConfigManager] Configuration will be discovered via system properties
+2023-08-31 15:11:45,807 INFO  [io.hawt.jmx.JmxTreeWatcher] Welcome to Hawtio 2.15.0
+2023-08-31 15:11:45,817 INFO  [io.hawt.web.auth.AuthenticationConfiguration] Starting hawtio authentication filter, JAAS realm: "activemq" authorized role(s): "amq" role principal classes: "org.apache.activemq.artemis.spi.core.security.jaas.RolePrincipal"
+2023-08-31 15:11:45,825 INFO  [io.hawt.web.auth.LoginRedirectFilter] Hawtio loginRedirectFilter is using 1800 sec. HttpSession timeout
+2023-08-31 15:11:45,839 INFO  [io.hawt.web.proxy.ProxyServlet] Proxy servlet is disabled
+2023-08-31 15:11:45,844 INFO  [io.hawt.web.servlets.JolokiaConfiguredAgentServlet] Jolokia overridden property: [key=policyLocation, value=file:/Users/juandaantoniuspakpahan/Java-phincon/message-broker/etc/jolokia-access.xml]
+2023-08-31 15:11:46,018 INFO  [org.apache.activemq.artemis] AMQ241001: HTTP Server started at http://localhost:8161
+2023-08-31 15:11:46,019 INFO  [org.apache.activemq.artemis] AMQ241002: Artemis Jolokia REST API available at http://localhost:8161/console/jolokia
+2023-08-31 15:11:46,019 INFO  [org.apache.activemq.artemis] AMQ241004: Artemis Console available at http://localhost:8161/console
+2023-08-31 15:11:46,259 INFO  [org.apache.activemq.artemis] AMQ241005: Stopping embedded web server
+2023-08-31 15:11:46,276 INFO  [io.hawt.HawtioContextListener] Destroying hawtio services
+2023-08-31 15:11:46,288 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Destroyed artemis-plugin plugin
+2023-08-31 15:11:46,295 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Destroyed activemq-branding plugin
+2023-08-31 15:11:46,327 INFO  [org.apache.activemq.artemis] AMQ241006: Stopped embedded web server
+2023-08-31 15:11:46,329 INFO  [org.apache.activemq.artemis.core.server] AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.30.0 [05411a65-47d6-11ee-83c0-46f0add6e2e5] stopped, uptime 3.245 seconds
+2023-08-31 15:12:38,794 INFO  [org.apache.activemq.artemis.integration.bootstrap] AMQ101000: Starting ActiveMQ Artemis Server version 2.30.0
+2023-08-31 15:12:38,996 INFO  [org.apache.activemq.artemis.core.server] AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=data/journal,bindingsDirectory=data/bindings,largeMessagesDirectory=data/large-messages,pagingDirectory=data/paging)
+2023-08-31 15:12:39,151 INFO  [org.apache.activemq.artemis.core.server] AMQ221013: Using NIO Journal
+2023-08-31 15:12:39,209 INFO  [org.apache.activemq.artemis.core.server] AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 1073741824
+2023-08-31 15:12:39,266 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2023-08-31 15:12:39,268 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+2023-08-31 15:12:39,268 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+2023-08-31 15:12:39,269 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-mqtt-protocol]. Adding protocol support for: MQTT
+2023-08-31 15:12:39,270 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-openwire-protocol]. Adding protocol support for: OPENWIRE
+2023-08-31 15:12:39,270 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+2023-08-31 15:12:39,352 INFO  [org.apache.activemq.artemis.core.server] AMQ221034: Waiting indefinitely to obtain live lock
+2023-08-31 15:12:39,353 INFO  [org.apache.activemq.artemis.core.server] AMQ221035: Live Server Obtained live lock
+2023-08-31 15:12:39,718 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2023-08-31 15:12:39,722 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2023-08-31 15:12:39,731 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2023-08-31 15:12:39,732 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2023-08-31 15:12:40,525 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:61616 for protocols [CORE,MQTT,AMQP,STOMP,HORNETQ,OPENWIRE]
+2023-08-31 15:12:40,532 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5445 for protocols [HORNETQ,STOMP]
+2023-08-31 15:12:40,539 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5672 for protocols [AMQP]
+2023-08-31 15:12:40,560 ERROR [org.apache.activemq.artemis.core.server] AMQ224104: Error starting the Acceptor mqtt {scheme=tcp, tcpReceiveBufferSize=1048576, port=1883, host=0.0.0.0, protocols=MQTT, useEpoll=true, tcpSendBufferSize=1048576}
+2023-08-31 15:12:40,561 ERROR [org.apache.activemq.artemis.core.server] AMQ224000: Failure in initialisation
+java.lang.IllegalStateException: AMQ229230: Failed to bind acceptor mqtt to 0.0.0.0:1883
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.startServerChannels(NettyAcceptor.java:735) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.start(NettyAcceptor.java:531) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.server.impl.RemotingServiceImpl.startAcceptors(RemotingServiceImpl.java:316) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.completeActivation(ActiveMQServerImpl.java:3542) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.LiveOnlyActivation.run(LiveOnlyActivation.java:80) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:718) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:608) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.integration.FileBroker.start(FileBroker.java:66) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.commands.Run.execute(Run.java:129) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.internalExecute(Artemis.java:214) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.execute(Artemis.java:164) [artemis-cli-2.30.0.jar:2.30.0]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.apache.activemq.artemis.boot.Artemis.execute(Artemis.java:144) [artemis-boot.jar:2.30.0]
+	at org.apache.activemq.artemis.boot.Artemis.main(Artemis.java:61) [artemis-boot.jar:2.30.0]
+Caused by: io.netty.channel.unix.Errors$NativeIoException: bind(..) failed: Address already in use
+2023-08-31 15:12:40,579 INFO  [org.apache.activemq.artemis.core.server] AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.30.0 [0.0.0.0, nodeID=05411a65-47d6-11ee-83c0-46f0add6e2e5] 
+2023-08-31 15:12:40,592 INFO  [org.apache.activemq.artemis] AMQ241003: Starting embedded web server
+2023-08-31 15:12:41,116 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Initialized activemq-branding plugin
+2023-08-31 15:12:41,232 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Initialized artemis-plugin plugin
+2023-08-31 15:12:41,622 INFO  [io.hawt.HawtioContextListener] Initialising hawtio services
+2023-08-31 15:12:41,631 INFO  [io.hawt.system.ConfigManager] Configuration will be discovered via system properties
+2023-08-31 15:12:41,642 INFO  [io.hawt.jmx.JmxTreeWatcher] Welcome to Hawtio 2.15.0
+2023-08-31 15:12:41,654 INFO  [io.hawt.web.auth.AuthenticationConfiguration] Starting hawtio authentication filter, JAAS realm: "activemq" authorized role(s): "amq" role principal classes: "org.apache.activemq.artemis.spi.core.security.jaas.RolePrincipal"
+2023-08-31 15:12:41,663 INFO  [io.hawt.web.auth.LoginRedirectFilter] Hawtio loginRedirectFilter is using 1800 sec. HttpSession timeout
+2023-08-31 15:12:41,679 INFO  [io.hawt.web.proxy.ProxyServlet] Proxy servlet is disabled
+2023-08-31 15:12:41,684 INFO  [io.hawt.web.servlets.JolokiaConfiguredAgentServlet] Jolokia overridden property: [key=policyLocation, value=file:/Users/juandaantoniuspakpahan/Java-phincon/message-broker/etc/jolokia-access.xml]
+2023-08-31 15:12:41,884 INFO  [org.apache.activemq.artemis] AMQ241001: HTTP Server started at http://localhost:8161
+2023-08-31 15:12:41,884 INFO  [org.apache.activemq.artemis] AMQ241002: Artemis Jolokia REST API available at http://localhost:8161/console/jolokia
+2023-08-31 15:12:41,885 INFO  [org.apache.activemq.artemis] AMQ241004: Artemis Console available at http://localhost:8161/console
+2023-08-31 15:12:42,267 INFO  [org.apache.activemq.artemis] AMQ241005: Stopping embedded web server
+2023-08-31 15:12:42,408 INFO  [io.hawt.HawtioContextListener] Destroying hawtio services
+2023-08-31 15:12:42,421 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Destroyed artemis-plugin plugin
+2023-08-31 15:12:42,428 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Destroyed activemq-branding plugin
+2023-08-31 15:12:42,496 INFO  [org.apache.activemq.artemis] AMQ241006: Stopped embedded web server
+2023-08-31 15:12:42,506 INFO  [org.apache.activemq.artemis.core.server] AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.30.0 [05411a65-47d6-11ee-83c0-46f0add6e2e5] stopped, uptime 3.668 seconds
+2023-08-31 15:15:18,983 INFO  [org.apache.activemq.artemis.integration.bootstrap] AMQ101000: Starting ActiveMQ Artemis Server version 2.30.0
+2023-08-31 15:15:19,175 INFO  [org.apache.activemq.artemis.core.server] AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=data/journal,bindingsDirectory=data/bindings,largeMessagesDirectory=data/large-messages,pagingDirectory=data/paging)
+2023-08-31 15:15:19,331 INFO  [org.apache.activemq.artemis.core.server] AMQ221013: Using NIO Journal
+2023-08-31 15:15:19,391 INFO  [org.apache.activemq.artemis.core.server] AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 1073741824
+2023-08-31 15:15:19,441 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2023-08-31 15:15:19,443 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+2023-08-31 15:15:19,443 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+2023-08-31 15:15:19,444 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-mqtt-protocol]. Adding protocol support for: MQTT
+2023-08-31 15:15:19,444 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-openwire-protocol]. Adding protocol support for: OPENWIRE
+2023-08-31 15:15:19,445 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+2023-08-31 15:15:19,530 INFO  [org.apache.activemq.artemis.core.server] AMQ221034: Waiting indefinitely to obtain live lock
+2023-08-31 15:15:19,530 INFO  [org.apache.activemq.artemis.core.server] AMQ221035: Live Server Obtained live lock
+2023-08-31 15:15:19,987 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2023-08-31 15:15:19,988 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2023-08-31 15:15:20,000 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2023-08-31 15:15:20,001 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2023-08-31 15:15:20,651 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:61616 for protocols [CORE,MQTT,AMQP,STOMP,HORNETQ,OPENWIRE]
+2023-08-31 15:15:20,659 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5445 for protocols [HORNETQ,STOMP]
+2023-08-31 15:15:20,664 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5672 for protocols [AMQP]
+2023-08-31 15:15:20,679 ERROR [org.apache.activemq.artemis.core.server] AMQ224104: Error starting the Acceptor mqtt {scheme=tcp, tcpReceiveBufferSize=1048576, port=1883, host=0.0.0.0, protocols=MQTT, useEpoll=true, tcpSendBufferSize=1048576}
+2023-08-31 15:15:20,681 ERROR [org.apache.activemq.artemis.core.server] AMQ224000: Failure in initialisation
+java.lang.IllegalStateException: AMQ229230: Failed to bind acceptor mqtt to 0.0.0.0:1883
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.startServerChannels(NettyAcceptor.java:735) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.start(NettyAcceptor.java:531) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.server.impl.RemotingServiceImpl.startAcceptors(RemotingServiceImpl.java:316) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.completeActivation(ActiveMQServerImpl.java:3542) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.LiveOnlyActivation.run(LiveOnlyActivation.java:80) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:718) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:608) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.integration.FileBroker.start(FileBroker.java:66) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.commands.Run.execute(Run.java:129) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.internalExecute(Artemis.java:214) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.execute(Artemis.java:164) [artemis-cli-2.30.0.jar:2.30.0]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.apache.activemq.artemis.boot.Artemis.execute(Artemis.java:144) [artemis-boot.jar:2.30.0]
+	at org.apache.activemq.artemis.boot.Artemis.main(Artemis.java:61) [artemis-boot.jar:2.30.0]
+Caused by: io.netty.channel.unix.Errors$NativeIoException: bind(..) failed: Address already in use
+2023-08-31 15:15:20,699 INFO  [org.apache.activemq.artemis.core.server] AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.30.0 [0.0.0.0, nodeID=05411a65-47d6-11ee-83c0-46f0add6e2e5] 
+2023-08-31 15:15:20,714 INFO  [org.apache.activemq.artemis] AMQ241003: Starting embedded web server
+2023-08-31 15:15:21,216 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Initialized activemq-branding plugin
+2023-08-31 15:15:21,328 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Initialized artemis-plugin plugin
+2023-08-31 15:15:21,718 INFO  [io.hawt.HawtioContextListener] Initialising hawtio services
+2023-08-31 15:15:21,726 INFO  [io.hawt.system.ConfigManager] Configuration will be discovered via system properties
+2023-08-31 15:15:21,739 INFO  [io.hawt.jmx.JmxTreeWatcher] Welcome to Hawtio 2.15.0
+2023-08-31 15:15:21,750 INFO  [io.hawt.web.auth.AuthenticationConfiguration] Starting hawtio authentication filter, JAAS realm: "activemq" authorized role(s): "amq" role principal classes: "org.apache.activemq.artemis.spi.core.security.jaas.RolePrincipal"
+2023-08-31 15:15:21,766 INFO  [io.hawt.web.auth.LoginRedirectFilter] Hawtio loginRedirectFilter is using 1800 sec. HttpSession timeout
+2023-08-31 15:15:21,780 INFO  [io.hawt.web.proxy.ProxyServlet] Proxy servlet is disabled
+2023-08-31 15:15:21,786 INFO  [io.hawt.web.servlets.JolokiaConfiguredAgentServlet] Jolokia overridden property: [key=policyLocation, value=file:/Users/juandaantoniuspakpahan/Java-phincon/message-broker/etc/jolokia-access.xml]
+2023-08-31 15:15:22,000 INFO  [org.apache.activemq.artemis] AMQ241001: HTTP Server started at http://localhost:8161
+2023-08-31 15:15:22,002 INFO  [org.apache.activemq.artemis] AMQ241002: Artemis Jolokia REST API available at http://localhost:8161/console/jolokia
+2023-08-31 15:15:22,002 INFO  [org.apache.activemq.artemis] AMQ241004: Artemis Console available at http://localhost:8161/console
+2023-08-31 15:15:22,348 INFO  [org.apache.activemq.artemis] AMQ241005: Stopping embedded web server
+2023-08-31 15:15:22,494 INFO  [io.hawt.HawtioContextListener] Destroying hawtio services
+2023-08-31 15:15:22,509 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Destroyed artemis-plugin plugin
+2023-08-31 15:15:22,516 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Destroyed activemq-branding plugin
+2023-08-31 15:15:22,590 INFO  [org.apache.activemq.artemis] AMQ241006: Stopped embedded web server
+2023-08-31 15:15:22,600 INFO  [org.apache.activemq.artemis.core.server] AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.30.0 [05411a65-47d6-11ee-83c0-46f0add6e2e5] stopped, uptime 3.577 seconds
+2023-08-31 15:16:58,371 INFO  [org.apache.activemq.artemis.integration.bootstrap] AMQ101000: Starting ActiveMQ Artemis Server version 2.30.0
+2023-08-31 15:16:58,577 INFO  [org.apache.activemq.artemis.core.server] AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=data/journal,bindingsDirectory=data/bindings,largeMessagesDirectory=data/large-messages,pagingDirectory=data/paging)
+2023-08-31 15:16:58,732 INFO  [org.apache.activemq.artemis.core.server] AMQ221013: Using NIO Journal
+2023-08-31 15:16:58,792 INFO  [org.apache.activemq.artemis.core.server] AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 1073741824
+2023-08-31 15:16:58,840 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2023-08-31 15:16:58,842 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+2023-08-31 15:16:58,843 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+2023-08-31 15:16:58,844 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-mqtt-protocol]. Adding protocol support for: MQTT
+2023-08-31 15:16:58,844 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-openwire-protocol]. Adding protocol support for: OPENWIRE
+2023-08-31 15:16:58,844 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+2023-08-31 15:16:58,929 INFO  [org.apache.activemq.artemis.core.server] AMQ221034: Waiting indefinitely to obtain live lock
+2023-08-31 15:16:58,930 INFO  [org.apache.activemq.artemis.core.server] AMQ221035: Live Server Obtained live lock
+2023-08-31 15:16:59,386 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2023-08-31 15:16:59,391 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2023-08-31 15:16:59,405 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2023-08-31 15:16:59,406 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2023-08-31 15:17:00,502 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:61616 for protocols [CORE,MQTT,AMQP,STOMP,HORNETQ,OPENWIRE]
+2023-08-31 15:17:00,509 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5445 for protocols [HORNETQ,STOMP]
+2023-08-31 15:17:00,515 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5672 for protocols [AMQP]
+2023-08-31 15:17:00,530 ERROR [org.apache.activemq.artemis.core.server] AMQ224104: Error starting the Acceptor mqtt {scheme=tcp, tcpReceiveBufferSize=1048576, port=1883, host=0.0.0.0, protocols=MQTT, useEpoll=true, tcpSendBufferSize=1048576}
+2023-08-31 15:17:00,531 ERROR [org.apache.activemq.artemis.core.server] AMQ224000: Failure in initialisation
+java.lang.IllegalStateException: AMQ229230: Failed to bind acceptor mqtt to 0.0.0.0:1883
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.startServerChannels(NettyAcceptor.java:735) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.start(NettyAcceptor.java:531) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.server.impl.RemotingServiceImpl.startAcceptors(RemotingServiceImpl.java:316) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.completeActivation(ActiveMQServerImpl.java:3542) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.LiveOnlyActivation.run(LiveOnlyActivation.java:80) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:718) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:608) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.integration.FileBroker.start(FileBroker.java:66) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.commands.Run.execute(Run.java:129) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.internalExecute(Artemis.java:214) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.execute(Artemis.java:164) [artemis-cli-2.30.0.jar:2.30.0]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.apache.activemq.artemis.boot.Artemis.execute(Artemis.java:144) [artemis-boot.jar:2.30.0]
+	at org.apache.activemq.artemis.boot.Artemis.main(Artemis.java:61) [artemis-boot.jar:2.30.0]
+Caused by: io.netty.channel.unix.Errors$NativeIoException: bind(..) failed: Address already in use
+2023-08-31 15:17:00,553 INFO  [org.apache.activemq.artemis.core.server] AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.30.0 [0.0.0.0, nodeID=05411a65-47d6-11ee-83c0-46f0add6e2e5] 
+2023-08-31 15:17:00,569 INFO  [org.apache.activemq.artemis] AMQ241003: Starting embedded web server
+2023-08-31 15:17:01,068 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Initialized activemq-branding plugin
+2023-08-31 15:17:01,176 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Initialized artemis-plugin plugin
+2023-08-31 15:17:01,579 INFO  [io.hawt.HawtioContextListener] Initialising hawtio services
+2023-08-31 15:17:01,587 INFO  [io.hawt.system.ConfigManager] Configuration will be discovered via system properties
+2023-08-31 15:17:01,600 INFO  [io.hawt.jmx.JmxTreeWatcher] Welcome to Hawtio 2.15.0
+2023-08-31 15:17:01,611 INFO  [io.hawt.web.auth.AuthenticationConfiguration] Starting hawtio authentication filter, JAAS realm: "activemq" authorized role(s): "amq" role principal classes: "org.apache.activemq.artemis.spi.core.security.jaas.RolePrincipal"
+2023-08-31 15:17:01,621 INFO  [io.hawt.web.auth.LoginRedirectFilter] Hawtio loginRedirectFilter is using 1800 sec. HttpSession timeout
+2023-08-31 15:17:01,634 INFO  [io.hawt.web.proxy.ProxyServlet] Proxy servlet is disabled
+2023-08-31 15:17:01,639 INFO  [io.hawt.web.servlets.JolokiaConfiguredAgentServlet] Jolokia overridden property: [key=policyLocation, value=file:/Users/juandaantoniuspakpahan/Java-phincon/message-broker/etc/jolokia-access.xml]
+2023-08-31 15:17:01,845 INFO  [org.apache.activemq.artemis] AMQ241001: HTTP Server started at http://localhost:8161
+2023-08-31 15:17:01,846 INFO  [org.apache.activemq.artemis] AMQ241002: Artemis Jolokia REST API available at http://localhost:8161/console/jolokia
+2023-08-31 15:17:01,846 INFO  [org.apache.activemq.artemis] AMQ241004: Artemis Console available at http://localhost:8161/console
+2023-08-31 15:17:02,220 INFO  [org.apache.activemq.artemis] AMQ241005: Stopping embedded web server
+2023-08-31 15:17:02,361 INFO  [io.hawt.HawtioContextListener] Destroying hawtio services
+2023-08-31 15:17:02,377 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Destroyed artemis-plugin plugin
+2023-08-31 15:17:02,384 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Destroyed activemq-branding plugin
+2023-08-31 15:17:02,452 INFO  [org.apache.activemq.artemis] AMQ241006: Stopped embedded web server
+2023-08-31 15:17:02,462 INFO  [org.apache.activemq.artemis.core.server] AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.30.0 [05411a65-47d6-11ee-83c0-46f0add6e2e5] stopped, uptime 4.049 seconds
+2023-08-31 15:18:06,095 INFO  [org.apache.activemq.artemis.integration.bootstrap] AMQ101000: Starting ActiveMQ Artemis Server version 2.30.0
+2023-08-31 15:18:06,341 INFO  [org.apache.activemq.artemis.core.server] AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=data/journal,bindingsDirectory=data/bindings,largeMessagesDirectory=data/large-messages,pagingDirectory=data/paging)
+2023-08-31 15:18:06,459 INFO  [org.apache.activemq.artemis.core.server] AMQ221013: Using NIO Journal
+2023-08-31 15:18:06,518 INFO  [org.apache.activemq.artemis.core.server] AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 1073741824
+2023-08-31 15:18:06,574 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2023-08-31 15:18:06,576 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+2023-08-31 15:18:06,577 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+2023-08-31 15:18:06,578 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-mqtt-protocol]. Adding protocol support for: MQTT
+2023-08-31 15:18:06,578 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-openwire-protocol]. Adding protocol support for: OPENWIRE
+2023-08-31 15:18:06,579 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+2023-08-31 15:18:06,671 INFO  [org.apache.activemq.artemis.core.server] AMQ221034: Waiting indefinitely to obtain live lock
+2023-08-31 15:18:06,671 INFO  [org.apache.activemq.artemis.core.server] AMQ221035: Live Server Obtained live lock
+2023-08-31 15:18:07,082 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2023-08-31 15:18:07,085 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2023-08-31 15:18:07,107 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2023-08-31 15:18:07,108 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2023-08-31 15:18:07,762 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:61616 for protocols [CORE,MQTT,AMQP,STOMP,HORNETQ,OPENWIRE]
+2023-08-31 15:18:07,768 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5445 for protocols [HORNETQ,STOMP]
+2023-08-31 15:18:07,774 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5672 for protocols [AMQP]
+2023-08-31 15:18:07,787 ERROR [org.apache.activemq.artemis.core.server] AMQ224104: Error starting the Acceptor mqtt {scheme=tcp, tcpReceiveBufferSize=1048576, port=1883, host=0.0.0.0, protocols=MQTT, useEpoll=true, tcpSendBufferSize=1048576}
+2023-08-31 15:18:07,788 ERROR [org.apache.activemq.artemis.core.server] AMQ224000: Failure in initialisation
+java.lang.IllegalStateException: AMQ229230: Failed to bind acceptor mqtt to 0.0.0.0:1883
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.startServerChannels(NettyAcceptor.java:735) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.start(NettyAcceptor.java:531) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.server.impl.RemotingServiceImpl.startAcceptors(RemotingServiceImpl.java:316) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.completeActivation(ActiveMQServerImpl.java:3542) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.LiveOnlyActivation.run(LiveOnlyActivation.java:80) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:718) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:608) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.integration.FileBroker.start(FileBroker.java:66) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.commands.Run.execute(Run.java:129) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.internalExecute(Artemis.java:214) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.execute(Artemis.java:164) [artemis-cli-2.30.0.jar:2.30.0]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.apache.activemq.artemis.boot.Artemis.execute(Artemis.java:144) [artemis-boot.jar:2.30.0]
+	at org.apache.activemq.artemis.boot.Artemis.main(Artemis.java:61) [artemis-boot.jar:2.30.0]
+Caused by: io.netty.channel.unix.Errors$NativeIoException: bind(..) failed: Address already in use
+2023-08-31 15:18:07,807 INFO  [org.apache.activemq.artemis.core.server] AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.30.0 [0.0.0.0, nodeID=05411a65-47d6-11ee-83c0-46f0add6e2e5] 
+2023-08-31 15:18:07,820 INFO  [org.apache.activemq.artemis] AMQ241003: Starting embedded web server
+2023-08-31 15:18:08,327 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Initialized activemq-branding plugin
+2023-08-31 15:18:08,448 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Initialized artemis-plugin plugin
+2023-08-31 15:18:08,829 INFO  [io.hawt.HawtioContextListener] Initialising hawtio services
+2023-08-31 15:18:08,837 INFO  [io.hawt.system.ConfigManager] Configuration will be discovered via system properties
+2023-08-31 15:18:08,851 INFO  [io.hawt.jmx.JmxTreeWatcher] Welcome to Hawtio 2.15.0
+2023-08-31 15:18:08,862 INFO  [io.hawt.web.auth.AuthenticationConfiguration] Starting hawtio authentication filter, JAAS realm: "activemq" authorized role(s): "amq" role principal classes: "org.apache.activemq.artemis.spi.core.security.jaas.RolePrincipal"
+2023-08-31 15:18:08,871 INFO  [io.hawt.web.auth.LoginRedirectFilter] Hawtio loginRedirectFilter is using 1800 sec. HttpSession timeout
+2023-08-31 15:18:08,888 INFO  [io.hawt.web.proxy.ProxyServlet] Proxy servlet is disabled
+2023-08-31 15:18:08,894 INFO  [io.hawt.web.servlets.JolokiaConfiguredAgentServlet] Jolokia overridden property: [key=policyLocation, value=file:/Users/juandaantoniuspakpahan/Java-phincon/message-broker/etc/jolokia-access.xml]
+2023-08-31 15:18:09,077 INFO  [org.apache.activemq.artemis] AMQ241001: HTTP Server started at http://localhost:8161
+2023-08-31 15:18:09,079 INFO  [org.apache.activemq.artemis] AMQ241002: Artemis Jolokia REST API available at http://localhost:8161/console/jolokia
+2023-08-31 15:18:09,079 INFO  [org.apache.activemq.artemis] AMQ241004: Artemis Console available at http://localhost:8161/console
+2023-08-31 15:18:09,260 INFO  [org.apache.activemq.artemis] AMQ241005: Stopping embedded web server
+2023-08-31 15:18:09,271 INFO  [io.hawt.HawtioContextListener] Destroying hawtio services
+2023-08-31 15:18:09,283 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Destroyed artemis-plugin plugin
+2023-08-31 15:18:09,289 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Destroyed activemq-branding plugin
+2023-08-31 15:18:09,497 INFO  [org.apache.activemq.artemis] AMQ241006: Stopped embedded web server
+2023-08-31 15:18:09,532 INFO  [org.apache.activemq.artemis.core.server] AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.30.0 [05411a65-47d6-11ee-83c0-46f0add6e2e5] stopped, uptime 3.232 seconds
+2023-08-31 15:21:34,028 INFO  [org.apache.activemq.artemis.integration.bootstrap] AMQ101000: Starting ActiveMQ Artemis Server version 2.30.0
+2023-08-31 15:21:34,228 INFO  [org.apache.activemq.artemis.core.server] AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=data/journal,bindingsDirectory=data/bindings,largeMessagesDirectory=data/large-messages,pagingDirectory=data/paging)
+2023-08-31 15:21:34,384 INFO  [org.apache.activemq.artemis.core.server] AMQ221013: Using NIO Journal
+2023-08-31 15:21:34,438 INFO  [org.apache.activemq.artemis.core.server] AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 1073741824
+2023-08-31 15:21:34,482 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2023-08-31 15:21:34,484 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+2023-08-31 15:21:34,485 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+2023-08-31 15:21:34,485 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-mqtt-protocol]. Adding protocol support for: MQTT
+2023-08-31 15:21:34,486 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-openwire-protocol]. Adding protocol support for: OPENWIRE
+2023-08-31 15:21:34,486 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+2023-08-31 15:21:34,564 INFO  [org.apache.activemq.artemis.core.server] AMQ221034: Waiting indefinitely to obtain live lock
+2023-08-31 15:21:34,564 INFO  [org.apache.activemq.artemis.core.server] AMQ221035: Live Server Obtained live lock
+2023-08-31 15:21:34,986 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2023-08-31 15:21:34,987 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2023-08-31 15:21:35,000 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2023-08-31 15:21:35,003 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2023-08-31 15:21:35,707 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:61616 for protocols [CORE,MQTT,AMQP,STOMP,HORNETQ,OPENWIRE]
+2023-08-31 15:21:35,712 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5445 for protocols [HORNETQ,STOMP]
+2023-08-31 15:21:35,719 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5672 for protocols [AMQP]
+2023-08-31 15:21:35,737 ERROR [org.apache.activemq.artemis.core.server] AMQ224104: Error starting the Acceptor mqtt {scheme=tcp, tcpReceiveBufferSize=1048576, port=1883, host=0.0.0.0, protocols=MQTT, useEpoll=true, tcpSendBufferSize=1048576}
+2023-08-31 15:21:35,739 ERROR [org.apache.activemq.artemis.core.server] AMQ224000: Failure in initialisation
+java.lang.IllegalStateException: AMQ229230: Failed to bind acceptor mqtt to 0.0.0.0:1883
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.startServerChannels(NettyAcceptor.java:735) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.start(NettyAcceptor.java:531) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.server.impl.RemotingServiceImpl.startAcceptors(RemotingServiceImpl.java:316) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.completeActivation(ActiveMQServerImpl.java:3542) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.LiveOnlyActivation.run(LiveOnlyActivation.java:80) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:718) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:608) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.integration.FileBroker.start(FileBroker.java:66) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.commands.Run.execute(Run.java:129) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.internalExecute(Artemis.java:214) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.execute(Artemis.java:164) [artemis-cli-2.30.0.jar:2.30.0]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.apache.activemq.artemis.boot.Artemis.execute(Artemis.java:144) [artemis-boot.jar:2.30.0]
+	at org.apache.activemq.artemis.boot.Artemis.main(Artemis.java:61) [artemis-boot.jar:2.30.0]
+Caused by: io.netty.channel.unix.Errors$NativeIoException: bind(..) failed: Address already in use
+2023-08-31 15:21:35,758 INFO  [org.apache.activemq.artemis.core.server] AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.30.0 [0.0.0.0, nodeID=05411a65-47d6-11ee-83c0-46f0add6e2e5] 
+2023-08-31 15:21:35,770 INFO  [org.apache.activemq.artemis] AMQ241003: Starting embedded web server
+2023-08-31 15:21:36,238 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Initialized activemq-branding plugin
+2023-08-31 15:21:36,341 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Initialized artemis-plugin plugin
+2023-08-31 15:21:36,745 INFO  [io.hawt.HawtioContextListener] Initialising hawtio services
+2023-08-31 15:21:36,752 INFO  [io.hawt.system.ConfigManager] Configuration will be discovered via system properties
+2023-08-31 15:21:36,767 INFO  [io.hawt.jmx.JmxTreeWatcher] Welcome to Hawtio 2.15.0
+2023-08-31 15:21:36,778 INFO  [io.hawt.web.auth.AuthenticationConfiguration] Starting hawtio authentication filter, JAAS realm: "activemq" authorized role(s): "amq" role principal classes: "org.apache.activemq.artemis.spi.core.security.jaas.RolePrincipal"
+2023-08-31 15:21:36,786 INFO  [io.hawt.web.auth.LoginRedirectFilter] Hawtio loginRedirectFilter is using 1800 sec. HttpSession timeout
+2023-08-31 15:21:36,802 INFO  [io.hawt.web.proxy.ProxyServlet] Proxy servlet is disabled
+2023-08-31 15:21:36,810 INFO  [io.hawt.web.servlets.JolokiaConfiguredAgentServlet] Jolokia overridden property: [key=policyLocation, value=file:/Users/juandaantoniuspakpahan/Java-phincon/message-broker/etc/jolokia-access.xml]
+2023-08-31 15:21:37,002 INFO  [org.apache.activemq.artemis] AMQ241001: HTTP Server started at http://localhost:8161
+2023-08-31 15:21:37,004 INFO  [org.apache.activemq.artemis] AMQ241002: Artemis Jolokia REST API available at http://localhost:8161/console/jolokia
+2023-08-31 15:21:37,004 INFO  [org.apache.activemq.artemis] AMQ241004: Artemis Console available at http://localhost:8161/console
+2023-08-31 15:21:37,427 INFO  [org.apache.activemq.artemis] AMQ241005: Stopping embedded web server
+2023-08-31 15:21:37,570 INFO  [io.hawt.HawtioContextListener] Destroying hawtio services
+2023-08-31 15:21:37,585 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Destroyed artemis-plugin plugin
+2023-08-31 15:21:37,592 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Destroyed activemq-branding plugin
+2023-08-31 15:21:37,666 INFO  [org.apache.activemq.artemis] AMQ241006: Stopped embedded web server
+2023-08-31 15:21:37,682 INFO  [org.apache.activemq.artemis.core.server] AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.30.0 [05411a65-47d6-11ee-83c0-46f0add6e2e5] stopped, uptime 3.609 seconds
+2023-08-31 15:22:37,273 INFO  [org.apache.activemq.artemis.integration.bootstrap] AMQ101000: Starting ActiveMQ Artemis Server version 2.30.0
+2023-08-31 15:22:37,514 INFO  [org.apache.activemq.artemis.core.server] AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=data/journal,bindingsDirectory=data/bindings,largeMessagesDirectory=data/large-messages,pagingDirectory=data/paging)
+2023-08-31 15:22:37,622 INFO  [org.apache.activemq.artemis.core.server] AMQ221013: Using NIO Journal
+2023-08-31 15:22:37,676 INFO  [org.apache.activemq.artemis.core.server] AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 1073741824
+2023-08-31 15:22:37,722 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2023-08-31 15:22:37,723 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+2023-08-31 15:22:37,724 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+2023-08-31 15:22:37,725 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-mqtt-protocol]. Adding protocol support for: MQTT
+2023-08-31 15:22:37,725 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-openwire-protocol]. Adding protocol support for: OPENWIRE
+2023-08-31 15:22:37,725 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+2023-08-31 15:22:37,805 INFO  [org.apache.activemq.artemis.core.server] AMQ221034: Waiting indefinitely to obtain live lock
+2023-08-31 15:22:37,805 INFO  [org.apache.activemq.artemis.core.server] AMQ221035: Live Server Obtained live lock
+2023-08-31 15:22:38,231 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2023-08-31 15:22:38,234 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2023-08-31 15:22:38,246 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2023-08-31 15:22:38,246 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2023-08-31 15:22:39,637 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:61616 for protocols [CORE,MQTT,AMQP,STOMP,HORNETQ,OPENWIRE]
+2023-08-31 15:22:39,647 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5445 for protocols [HORNETQ,STOMP]
+2023-08-31 15:22:39,654 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5672 for protocols [AMQP]
+2023-08-31 15:22:39,672 ERROR [org.apache.activemq.artemis.core.server] AMQ224104: Error starting the Acceptor mqtt {scheme=tcp, tcpReceiveBufferSize=1048576, port=1883, host=0.0.0.0, protocols=MQTT, useEpoll=true, tcpSendBufferSize=1048576}
+2023-08-31 15:22:39,673 ERROR [org.apache.activemq.artemis.core.server] AMQ224000: Failure in initialisation
+java.lang.IllegalStateException: AMQ229230: Failed to bind acceptor mqtt to 0.0.0.0:1883
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.startServerChannels(NettyAcceptor.java:735) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyAcceptor.start(NettyAcceptor.java:531) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.remoting.server.impl.RemotingServiceImpl.startAcceptors(RemotingServiceImpl.java:316) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.completeActivation(ActiveMQServerImpl.java:3542) ~[artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.LiveOnlyActivation.run(LiveOnlyActivation.java:80) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:718) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:608) [artemis-server-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.integration.FileBroker.start(FileBroker.java:66) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.commands.Run.execute(Run.java:129) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.internalExecute(Artemis.java:214) [artemis-cli-2.30.0.jar:2.30.0]
+	at org.apache.activemq.artemis.cli.Artemis.execute(Artemis.java:164) [artemis-cli-2.30.0.jar:2.30.0]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.apache.activemq.artemis.boot.Artemis.execute(Artemis.java:144) [artemis-boot.jar:2.30.0]
+	at org.apache.activemq.artemis.boot.Artemis.main(Artemis.java:61) [artemis-boot.jar:2.30.0]
+Caused by: io.netty.channel.unix.Errors$NativeIoException: bind(..) failed: Address already in use
+2023-08-31 15:22:39,691 INFO  [org.apache.activemq.artemis.core.server] AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.30.0 [0.0.0.0, nodeID=05411a65-47d6-11ee-83c0-46f0add6e2e5] 
+2023-08-31 15:22:39,702 INFO  [org.apache.activemq.artemis] AMQ241003: Starting embedded web server
+2023-08-31 15:22:40,169 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Initialized activemq-branding plugin
+2023-08-31 15:22:40,279 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Initialized artemis-plugin plugin
+2023-08-31 15:22:40,665 INFO  [io.hawt.HawtioContextListener] Initialising hawtio services
+2023-08-31 15:22:40,675 INFO  [io.hawt.system.ConfigManager] Configuration will be discovered via system properties
+2023-08-31 15:22:40,686 INFO  [io.hawt.jmx.JmxTreeWatcher] Welcome to Hawtio 2.15.0
+2023-08-31 15:22:40,695 INFO  [io.hawt.web.auth.AuthenticationConfiguration] Starting hawtio authentication filter, JAAS realm: "activemq" authorized role(s): "amq" role principal classes: "org.apache.activemq.artemis.spi.core.security.jaas.RolePrincipal"
+2023-08-31 15:22:40,703 INFO  [io.hawt.web.auth.LoginRedirectFilter] Hawtio loginRedirectFilter is using 1800 sec. HttpSession timeout
+2023-08-31 15:22:40,717 INFO  [io.hawt.web.proxy.ProxyServlet] Proxy servlet is disabled
+2023-08-31 15:22:40,722 INFO  [io.hawt.web.servlets.JolokiaConfiguredAgentServlet] Jolokia overridden property: [key=policyLocation, value=file:/Users/juandaantoniuspakpahan/Java-phincon/message-broker/etc/jolokia-access.xml]
+2023-08-31 15:22:40,925 INFO  [org.apache.activemq.artemis] AMQ241001: HTTP Server started at http://localhost:8161
+2023-08-31 15:22:40,926 INFO  [org.apache.activemq.artemis] AMQ241002: Artemis Jolokia REST API available at http://localhost:8161/console/jolokia
+2023-08-31 15:22:40,926 INFO  [org.apache.activemq.artemis] AMQ241004: Artemis Console available at http://localhost:8161/console
+2023-08-31 15:22:41,376 INFO  [org.apache.activemq.artemis] AMQ241005: Stopping embedded web server
+2023-08-31 15:22:41,494 INFO  [io.hawt.HawtioContextListener] Destroying hawtio services
+2023-08-31 15:22:41,508 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Destroyed artemis-plugin plugin
+2023-08-31 15:22:41,516 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Destroyed activemq-branding plugin
+2023-08-31 15:22:41,582 INFO  [org.apache.activemq.artemis] AMQ241006: Stopped embedded web server
+2023-08-31 15:22:41,594 INFO  [org.apache.activemq.artemis.core.server] AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.30.0 [05411a65-47d6-11ee-83c0-46f0add6e2e5] stopped, uptime 4.124 seconds
+2023-08-31 15:24:59,885 INFO  [org.apache.activemq.artemis.integration.bootstrap] AMQ101000: Starting ActiveMQ Artemis Server version 2.30.0
+2023-08-31 15:25:00,080 INFO  [org.apache.activemq.artemis.core.server] AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=data/journal,bindingsDirectory=data/bindings,largeMessagesDirectory=data/large-messages,pagingDirectory=data/paging)
+2023-08-31 15:25:00,230 INFO  [org.apache.activemq.artemis.core.server] AMQ221013: Using NIO Journal
+2023-08-31 15:25:00,285 INFO  [org.apache.activemq.artemis.core.server] AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 1073741824
+2023-08-31 15:25:00,331 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2023-08-31 15:25:00,333 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+2023-08-31 15:25:00,334 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+2023-08-31 15:25:00,334 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-mqtt-protocol]. Adding protocol support for: MQTT
+2023-08-31 15:25:00,335 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-openwire-protocol]. Adding protocol support for: OPENWIRE
+2023-08-31 15:25:00,335 INFO  [org.apache.activemq.artemis.core.server] AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+2023-08-31 15:25:00,418 INFO  [org.apache.activemq.artemis.core.server] AMQ221034: Waiting indefinitely to obtain live lock
+2023-08-31 15:25:00,419 INFO  [org.apache.activemq.artemis.core.server] AMQ221035: Live Server Obtained live lock
+2023-08-31 15:25:00,839 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2023-08-31 15:25:00,841 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2023-08-31 15:25:00,855 INFO  [org.apache.activemq.artemis.core.server] AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2023-08-31 15:25:00,857 INFO  [org.apache.activemq.artemis.core.server] AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2023-08-31 15:25:01,622 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:61616 for protocols [CORE,MQTT,AMQP,STOMP,HORNETQ,OPENWIRE]
+2023-08-31 15:25:01,629 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5445 for protocols [HORNETQ,STOMP]
+2023-08-31 15:25:01,636 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:5672 for protocols [AMQP]
+2023-08-31 15:25:01,644 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:1883 for protocols [MQTT]
+2023-08-31 15:25:01,651 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started KQUEUE Acceptor at 0.0.0.0:61613 for protocols [STOMP]
+2023-08-31 15:25:01,659 INFO  [org.apache.activemq.artemis.core.server] AMQ221007: Server is now live
+2023-08-31 15:25:01,659 INFO  [org.apache.activemq.artemis.core.server] AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.30.0 [0.0.0.0, nodeID=05411a65-47d6-11ee-83c0-46f0add6e2e5] 
+2023-08-31 15:25:01,669 INFO  [org.apache.activemq.artemis] AMQ241003: Starting embedded web server
+2023-08-31 15:25:02,187 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Initialized activemq-branding plugin
+2023-08-31 15:25:02,344 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Initialized artemis-plugin plugin
+2023-08-31 15:25:02,766 INFO  [io.hawt.HawtioContextListener] Initialising hawtio services
+2023-08-31 15:25:02,776 INFO  [io.hawt.system.ConfigManager] Configuration will be discovered via system properties
+2023-08-31 15:25:02,786 INFO  [io.hawt.jmx.JmxTreeWatcher] Welcome to Hawtio 2.15.0
+2023-08-31 15:25:02,795 INFO  [io.hawt.web.auth.AuthenticationConfiguration] Starting hawtio authentication filter, JAAS realm: "activemq" authorized role(s): "amq" role principal classes: "org.apache.activemq.artemis.spi.core.security.jaas.RolePrincipal"
+2023-08-31 15:25:02,806 INFO  [io.hawt.web.auth.LoginRedirectFilter] Hawtio loginRedirectFilter is using 1800 sec. HttpSession timeout
+2023-08-31 15:25:02,819 INFO  [io.hawt.web.proxy.ProxyServlet] Proxy servlet is disabled
+2023-08-31 15:25:02,825 INFO  [io.hawt.web.servlets.JolokiaConfiguredAgentServlet] Jolokia overridden property: [key=policyLocation, value=file:/Users/juandaantoniuspakpahan/Java-phincon/message-broker/etc/jolokia-access.xml]
+2023-08-31 15:25:03,009 INFO  [org.apache.activemq.artemis] AMQ241001: HTTP Server started at http://localhost:8161
+2023-08-31 15:25:03,010 INFO  [org.apache.activemq.artemis] AMQ241002: Artemis Jolokia REST API available at http://localhost:8161/console/jolokia
+2023-08-31 15:25:03,010 INFO  [org.apache.activemq.artemis] AMQ241004: Artemis Console available at http://localhost:8161/console
+2023-08-31 15:25:15,766 INFO  [io.hawt.web.auth.LoginServlet] Hawtio login is using 1800 sec. HttpSession timeout
+2023-08-31 15:25:16,268 INFO  [io.hawt.web.auth.keycloak.KeycloakServlet] Keycloak integration is disabled
+2023-08-31 15:25:20,983 INFO  [io.hawt.web.auth.LoginServlet] Logging in user: admin
+2023-08-31 16:10:57,392 INFO  [io.hawt.web.auth.SessionExpiryFilter] Expiring session due to inactivity
+2023-08-31 16:21:18,160 INFO  [io.hawt.web.auth.LoginServlet] Logging in user: admin
+2023-08-31 16:24:13,927 INFO  [io.hawt.web.auth.AuthSessionHelpers] Logging out existing user: admin
+2023-08-31 16:24:18,300 INFO  [io.hawt.web.auth.LoginServlet] Logging in user: admin
+2023-08-31 17:01:06,495 INFO  [org.apache.activemq.artemis] AMQ241005: Stopping embedded web server
+2023-08-31 17:01:06,527 INFO  [io.hawt.HawtioContextListener] Destroying hawtio services
+2023-08-31 17:01:06,545 INFO  [org.apache.activemq.hawtio.plugin.PluginContextListener] Destroyed artemis-plugin plugin
+2023-08-31 17:01:06,552 INFO  [org.apache.activemq.hawtio.branding.PluginContextListener] Destroyed activemq-branding plugin
+2023-08-31 17:01:07,139 INFO  [org.apache.activemq.artemis] AMQ241006: Stopped embedded web server
+2023-08-31 17:01:07,140 INFO  [org.apache.activemq.artemis.core.server] AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.30.0 [05411a65-47d6-11ee-83c0-46f0add6e2e5] stopped, uptime 1 hour 36 minutes
