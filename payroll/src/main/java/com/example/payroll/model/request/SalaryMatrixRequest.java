@@ -39,4 +39,13 @@ public class SalaryMatrixRequest {
     private Timestamp created_at;
 
     private Timestamp updated_at;
+
+    public SalaryMatrixRequest(Long salaryMatrixId, int grade, double basicSalary, double payCut, double allowance, double headOfFamily) {
+        this.salaryMatrixId = salaryMatrixId;
+        this.grade = grade;
+        this.basicSalary = basicSalary;
+        this.payCut = payCut;
+        this.allowance = allowance;
+        this.headOfFamily = headOfFamily;
+    }
 }

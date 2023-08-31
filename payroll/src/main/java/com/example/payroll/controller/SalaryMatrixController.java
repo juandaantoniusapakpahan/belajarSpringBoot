@@ -7,6 +7,9 @@ import com.example.payroll.service.SalaryMatrixService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +47,8 @@ public class SalaryMatrixController {
 
     @GetMapping
     public ResponseEntity<?> findAll(@RequestParam int page, @RequestParam int size, @RequestParam String sortColumn){
-        Page<SalaryMatrix> _result =  salaryMatrixService.findAll(page, size, sortColumn);
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortColumn));
+        Page<SalaryMatrix> _result =  salaryMatrixService.findAll(pageable);
         OutPutResponseTemp outPutResponseTemp = new OutPutResponseTemp<>(HttpStatus.OK.name(),_result);
         return new ResponseEntity<>(outPutResponseTemp, HttpStatus.OK);
     }

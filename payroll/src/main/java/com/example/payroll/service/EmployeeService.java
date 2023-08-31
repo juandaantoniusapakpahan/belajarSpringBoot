@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface EmployeeService {
     public Employee save(EmployeeRequest employee);
     public Page<Employee> findAll(Pageable pageable);

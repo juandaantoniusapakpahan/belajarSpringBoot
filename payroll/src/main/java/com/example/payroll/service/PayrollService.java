@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface PayrollService {
     public Payroll save(PayrollRequest payrollRequest);
     public Payroll updateById(Long id, PayrollRequest request);

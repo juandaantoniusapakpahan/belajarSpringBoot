@@ -42,7 +42,7 @@ public class EmployeeServiceTest {
         employees.add(new Employee((long)1, "A","B","P",1,"98239",true,true));
         employees.add(new Employee((long)2, "B","A","P",1,"98234",true,true));
         employees.add(new Employee((long)3, "C","C","P",1,"98236",true,true));
-        employees.add(new Employee((long)4, "D","D","P",1,"98234",true,true));
+        employees.add(new Employee((long)4, "D","D","P",1,"98235",true,true));
         lenient().when(employeeRepository.findAll(PageRequest.of(0, 2))).thenReturn(new PageImpl<>(employees));
         lenient().when(employeeRepository.save(any()))
                 .thenReturn(new Employee((long)4, "D","D","P",1,"98234",true,true));
@@ -130,6 +130,45 @@ public class EmployeeServiceTest {
         assertNotNull(employees.getContent());
         assertNotEquals(2, employees.getContent().size());
         assertEquals(4, employees.getTotalElements());
+    }
+
+    @Test
+    @Order(7)
+    void setUpdateWithBadId(){
+       String message=  assertThrows(NoSuchEmployeeException.class, ()->{
+            employeeService.updateById(1l, any());
+        }).getMessage() ;
+
+       assertEquals("employee not found",message);
+    }
+
+    @Test
+    @Order(8)
+    void setUpdateById(){
+        EmployeeRequest employeeRequest = new EmployeeRequest(
+                "Juan",
+                "Da",
+                "Laki-laki",
+                2,
+                "2938434",
+                true,
+                true
+        );
+        Employee employee = new Employee(
+                12l,
+                "Juan",
+                "Da",
+                "Laki-laki",
+                2,
+                "2938434",
+                true,
+                true
+        );
+        lenient().when(employeeRepository.findById(12l)).thenReturn(Optional.of(employee));
+        lenient().when(employeeRepository.save(employee)).thenReturn(employee);
+
+        Employee employeeUpdate = employeeService.updateById(12l, employeeRequest);
+        assertEquals(employee, employeeUpdate);
     }
 
 }
