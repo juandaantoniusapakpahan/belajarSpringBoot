@@ -22,7 +22,7 @@ public class SpringBootJmsApplication {
 
 	@Bean // Serialize message content to json using TextMessage
 	public MessageConverter jacksonJmsMessageConverter() {
-		org.springframework.jms.support.converter.MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
+		MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
 		converter.setTargetType(MessageType.TEXT);
 		converter.setTypeIdPropertyName("_type");
 		return converter;

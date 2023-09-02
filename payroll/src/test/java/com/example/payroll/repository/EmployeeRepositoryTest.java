@@ -16,7 +16,6 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
