@@ -9,6 +9,8 @@ import com.example.springbootjwtmysql.entity.UserInfoDetails;
 import com.example.springbootjwtmysql.service.JwtService;
 import com.example.springbootjwtmysql.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,8 +34,8 @@ public class UserController {
     private AuthenticationManager authenticationManager;
 
     @GetMapping("/welcome")
-    public String welcome() {
-        return "Welcome this endpoint is not secure";
+    public ResponseEntity<?> welcome() {
+        return new ResponseEntity<>("Welcome this endpoint is not secure", HttpStatus.OK);
     }
 
 
@@ -49,8 +51,6 @@ public class UserController {
         UserInfoDetails userInfo = (UserInfoDetails) authentication.getPrincipal();
         return userInfo;
     }
-
-
 
     @GetMapping("/admin/adminProfile")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
